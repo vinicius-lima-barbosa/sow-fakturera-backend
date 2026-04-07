@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import databaseConnection from "./config/database/connection.js";
 import { UsersModule } from "./modules/users/users.module.js";
+import { AuthModule } from "./modules/auth/auth.module.js";
 
 class AppBootstrap {
   constructor() {
@@ -12,6 +13,7 @@ class AppBootstrap {
 
   registerModules() {
     UsersModule(this.app, this.prisma);
+    AuthModule(this.app, this.prisma);
   }
 
   async init() {
