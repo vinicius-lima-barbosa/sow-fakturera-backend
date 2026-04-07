@@ -19,9 +19,12 @@
   },
   "homepage": "https://github.com/vinicius-lima-barbosa/sow-fakturera-backend#readme",
   "dependencies": {
+    "@prisma/client": "^7.6.0",
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "dotenv": "^17.4.1",
+    "nodemon": "^3.1.14",
+    "prisma": "^7.6.0"
   }
 }
