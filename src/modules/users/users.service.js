@@ -1,4 +1,5 @@
 import bcrypt from "bcryptjs";
+import { toUserResponse } from "../../utils/to-user-response.util.js";
 
 export class UsersService {
   constructor(prisma) {
@@ -7,7 +8,7 @@ export class UsersService {
 
   async getAllUsers() {
     const users = await this.prisma.user.findMany();
-    return users;
+    return users.map((user) => toUserResponse(user));
   }
 
   async getUserById(id) {
@@ -16,7 +17,7 @@ export class UsersService {
       throw new Error("User not found");
     }
 
-    return user;
+    return toUserResponse(user);
   }
 
   async createUser(data) {
@@ -49,6 +50,6 @@ export class UsersService {
       throw new Error("Failed to create user");
     }
 
-    return newUser;
+    return toUserResponse(newUser);
   }
 }
