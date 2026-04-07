@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import cookieParser from "cookie-parser";
 import databaseConnection from "./config/database/connection.js";
 import { UsersModule } from "./modules/users/users.module.js";
 import { AuthModule } from "./modules/auth/auth.module.js";
@@ -8,6 +9,7 @@ class AppBootstrap {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || 3000;
+    this.secret = process.env.SECRET_KEY;
     this.prisma = databaseConnection.getPrisma();
   }
 
@@ -21,6 +23,7 @@ class AppBootstrap {
       await databaseConnection.connect();
       this.app.use(express.json());
       this.app.use(express.urlencoded({ extended: true }));
+      this.app.use(cookieParser(this.secret));
 
       this.registerModules();
 

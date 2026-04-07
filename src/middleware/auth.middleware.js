@@ -9,14 +9,12 @@ export const authMiddleware = (req, res, next) => {
       .json({ success: false, error: "Secret key is not defined" });
   }
 
-  const { authorization } = req.headers;
-  if (!authorization) {
+  const token = req.cookies.token;
+  if (!token) {
     return res
       .status(401)
       .json({ success: false, error: "Token not provided" });
   }
-
-  const [, token] = authorization.split(" ");
 
   try {
     const decoded = jwt.verify(token, secret);
