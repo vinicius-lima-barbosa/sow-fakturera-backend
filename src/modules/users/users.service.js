@@ -6,21 +6,21 @@ export class UsersService {
     this.prisma = prisma;
   }
 
-  async getAllUsers() {
+  getAllUsers = async () => {
     const users = await this.prisma.user.findMany();
     return users.map((user) => toUserResponse(user));
-  }
+  };
 
-  async getUserById(id) {
+  getUserById = async (id) => {
     const user = await this.prisma.user.findUnique({ where: { id } });
     if (!user) {
       throw new Error("User not found");
     }
 
     return toUserResponse(user);
-  }
+  };
 
-  async createUser(data) {
+  createUser = async (data) => {
     if (!data.name || data.name === "") {
       throw new Error("Name is required");
     }
@@ -51,5 +51,5 @@ export class UsersService {
     }
 
     return toUserResponse(newUser);
-  }
+  };
 }
