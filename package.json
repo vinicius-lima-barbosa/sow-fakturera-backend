@@ -5,7 +5,9 @@
   "main": "src/main.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/main.js"
+    "dev": "nodemon src/main.js",
+    "build:prod": "npx prisma generate && npm run build:dev",
+    "build:dev": "npx esbuild src/main.js --bundle --platform=node --target=node22 --outfile=dist/main.js"
   },
   "repository": {
     "type": "git",
