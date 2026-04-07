@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import databaseConnection from "./config/database/connection.js";
 import { UsersModule } from "./modules/users/users.module.js";
 import { AuthModule } from "./modules/auth/auth.module.js";
+import { ProductsModule } from "./modules/products/products.module.js";
 
 class AppBootstrap {
   constructor() {
@@ -16,6 +17,7 @@ class AppBootstrap {
   registerModules() {
     UsersModule(this.app, this.prisma);
     AuthModule(this.app, this.prisma);
+    ProductsModule(this.app, this.prisma);
   }
 
   async init() {

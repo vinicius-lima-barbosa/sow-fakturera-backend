@@ -23,7 +23,7 @@ model Product {
   inPrice       Int      @map("in_price")
   price         Int
   unit          String
-  inStock       BigInt   @map("in_stock")
+  inStock       Int      @map("in_stock")
   description   String
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
