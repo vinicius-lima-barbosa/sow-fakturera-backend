@@ -25,4 +25,14 @@ export class AuthController {
         .json({ success: false, error: "Error Login in, try again" });
     }
   };
+
+  logout = (_req, res) => {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "prod",
+      sameSite: process.env.NODE_ENV === "prod" ? "none" : "lax",
+    });
+
+    return res.status(200).json({ success: true, message: "Logged out" });
+  };
 }

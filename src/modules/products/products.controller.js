@@ -3,7 +3,7 @@ export class ProductsController {
     this.productsService = productsService;
   }
 
-  getAll = async (req, res) => {
+  getAll = async (_req, res) => {
     try {
       const response = await this.productsService.getAll();
 
