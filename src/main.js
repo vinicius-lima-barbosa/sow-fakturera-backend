@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import databaseConnection from "./config/database/connection.js";
+import { UsersModule } from "./modules/users/users.module.js";
 
 class AppBootstrap {
   constructor() {
@@ -9,23 +10,17 @@ class AppBootstrap {
     this.prisma = databaseConnection.getPrisma();
   }
 
-  routes() {
-    this.app.get("/users", async (req, res) => {
-      try {
-        const users = await this.prisma.user.findMany();
-        res.status(200).json(users);
-      } catch (error) {
-        res.status(500).json({ error: "Error fetching users" });
-      }
-    });
+  registerModules() {
+    UsersModule(this.app, this.prisma);
   }
 
   async init() {
     try {
       await databaseConnection.connect();
       this.app.use(express.json());
+      this.app.use(express.urlencoded({ extended: true }));
 
-      this.routes();
+      this.registerModules();
 
       this.app.listen(this.port, () => {
         console.log("Server in port", this.port);
