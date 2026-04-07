@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Backend repository for the SOW",
   "main": "src/main.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "dev": "nodemon src/main.js"
   },
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/vinicius-lima-barbosa/sow-fakturera-backend#readme",
   "dependencies": {
+    "@prisma/adapter-pg": "^7.6.0",
     "@prisma/client": "^7.6.0",
     "express": "^5.2.1"
   },
