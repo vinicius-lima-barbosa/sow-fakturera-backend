@@ -3,7 +3,7 @@ export class UsersController {
     this.usersService = usersService;
   }
 
-  getAllUsers = async (req, res) => {
+  getAllUsers = async (_req, res) => {
     try {
       const users = await this.usersService.getAllUsers();
       return res.status(200).json({ success: true, data: users });
