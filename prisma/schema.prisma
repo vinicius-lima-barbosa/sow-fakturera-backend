@@ -34,7 +34,7 @@ model Product {
 model LoginPageMetadata {
   id       String @id @default(uuid())
   // Language
-  language String
+  language String @unique
 
   // Header or NavbAr
   home         String
