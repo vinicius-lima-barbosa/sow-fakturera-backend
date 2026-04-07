@@ -1,0 +1,27 @@
+{
+  "name": "sow-fakturera-backend",
+  "version": "1.0.0",
+  "description": "Backend repository for the SOW",
+  "main": "src/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinicius-lima-barbosa/sow-fakturera-backend.git"
+  },
+  "keywords": [],
+  "author": "Vinicius Lima Barbosa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinicius-lima-barbosa/sow-fakturera-backend/issues"
+  },
+  "homepage": "https://github.com/vinicius-lima-barbosa/sow-fakturera-backend#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
