@@ -30,3 +30,34 @@ model Product {
 
   @@map("products")
 }
+
+model LoginPageMetadata {
+  id       String @id @default(uuid())
+  // Language
+  language String
+
+  // Header or NavbAr
+  home         String
+  order        String
+  ourCostumers String @map("our_costumers")
+  contactUs    String @map("contact_us")
+
+  // Login Card
+  loginHeader             String @map("login_header")
+  emailLabel              String @map("email_label")
+  emailField              String @map("email_field")
+  passwordLabel           String @map("password_label")
+  passwordField           String @map("password_field")
+  loginButton             String @map("login_button")
+  registerButton          String @map("register_button")
+  forgottenPasswordButton String @map("forgotten_password_button")
+
+  // Footer
+  footerTitle     String @map("footer_title")
+  footerHome      String @map("footer_home")
+  footerOrder     String @map("footer_order")
+  footerContactUs String @map("footer_contact_us")
+  rights          String @map("footer_rights")
+
+  @@map("login_page_metadata")
+}
