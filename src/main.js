@@ -1,11 +1,12 @@
+import cookieParser from "cookie-parser";
+import cors from "cors";
 import "dotenv/config";
 import express from "express";
-import cookieParser from "cookie-parser";
 import databaseConnection from "./config/database/connection.js";
-import { UsersModule } from "./modules/users/users.module.js";
 import { AuthModule } from "./modules/auth/auth.module.js";
-import { ProductsModule } from "./modules/products/products.module.js";
 import { MetadataModule } from "./modules/languages/metadata.module.js";
+import { ProductsModule } from "./modules/products/products.module.js";
+import { UsersModule } from "./modules/users/users.module.js";
 
 class AppBootstrap {
   constructor() {
@@ -28,6 +29,14 @@ class AppBootstrap {
       this.app.use(express.json());
       this.app.use(express.urlencoded({ extended: true }));
       this.app.use(cookieParser(this.secret));
+      this.app.use(
+        cors({
+          origin: true,
+          methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+          allowedHeaders: ["Content-Type", "Authorization"],
+          credentials: true,
+        }),
+      );
 
       this.registerModules();
 
