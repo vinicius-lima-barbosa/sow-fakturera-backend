@@ -7,7 +7,11 @@ export class UsersController {
     try {
       const users = await this.usersService.getAllUsers();
       return res.status(200).json({ success: true, data: users });
-    } catch {
+    } catch (error) {
+      if (error.message) {
+        return res.status(400).json({ success: false, error: error.message });
+      }
+
       return res
         .status(500)
         .json({ success: false, error: "Error while fetching the users" });
@@ -21,6 +25,28 @@ export class UsersController {
 
       return res.status(200).json({ success: true, data: user });
     } catch (error) {
+      if (error.message) {
+        return res.status(400).json({ success: false, error: error.message });
+      }
+
+      return res
+        .status(500)
+        .json({ success: false, error: "Error while fetching user" });
+    }
+  };
+
+  getMe = async (req, res) => {
+    try {
+      const id = req.id;
+
+      const user = await this.usersService.getUserById(id);
+
+      return res.status(200).json({ success: true, data: user });
+    } catch (error) {
+      if (error.message) {
+        return res.status(400).json({ success: false, error: error.message });
+      }
+
       return res
         .status(500)
         .json({ success: false, error: "Error while fetching user" });

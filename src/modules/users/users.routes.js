@@ -8,6 +8,7 @@ export class UsersRoutes {
 
   register() {
     this.router.get("/", this.usersController.getAllUsers);
+    this.router.get("/me", this.usersController.getMe);
     this.router.get("/:id", this.usersController.getUserById);
     this.router.post("/", this.usersController.createUser);
     return this.router;
