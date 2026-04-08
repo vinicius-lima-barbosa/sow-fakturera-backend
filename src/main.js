@@ -5,6 +5,7 @@ import databaseConnection from "./config/database/connection.js";
 import { UsersModule } from "./modules/users/users.module.js";
 import { AuthModule } from "./modules/auth/auth.module.js";
 import { ProductsModule } from "./modules/products/products.module.js";
+import { MetadataModule } from "./modules/languages/metadata.module.js";
 
 class AppBootstrap {
   constructor() {
@@ -18,6 +19,7 @@ class AppBootstrap {
     UsersModule(this.app, this.prisma);
     AuthModule(this.app, this.prisma);
     ProductsModule(this.app, this.prisma);
+    MetadataModule(this.app, this.prisma);
   }
 
   async init() {
