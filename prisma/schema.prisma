@@ -40,6 +40,7 @@ model LoginPageMetadata {
   // Header or NavbAr
   home         String
   order        String
+  aboutUs      String @map("about_us")
   ourCostumers String @map("our_costumers")
   contactUs    String @map("contact_us")
 
