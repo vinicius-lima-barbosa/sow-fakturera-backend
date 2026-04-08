@@ -35,6 +35,7 @@ model LoginPageMetadata {
   id       String @id @default(uuid())
   // Language
   language String @unique
+  iconUrl  String @map("icon_url")
 
   // Header or NavbAr
   home         String
