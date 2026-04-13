@@ -24,4 +24,4 @@ COPY --from=builder /app/prisma ./prisma
 
 EXPOSE 3000
 
-CMD ["node", "dist/main.cjs"]
+CMD ["sh", "-c", "until npx prisma migrate deploy; do echo 'waiting db...'; sleep 2; done && node dist/main.cjs"]
