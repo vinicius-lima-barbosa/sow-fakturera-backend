@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { authMiddleware } from "../../middleware/auth.middleware.js";
 
 export class UsersRoutes {
   constructor(usersController) {
